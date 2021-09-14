@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.board.mapper.BoardMapper">
+    <sql id="boardColumns">
+        idx,
+        title,
+        content,
+        writer,
+        view_cnt,
+        notice_yn,
+        secret_yn,
+        delete_yn,
+        insert_time,
+        update_time,
+        delete_time
+    </sql>
+
+    <insert id="insertBoard" parameterType="com.board.domain.BoardDTO">
+        insert into tb_board (<include refid="boardColumns"/>)
+        values (
+        #{idx},
+        #{title},
+        #{content},
+        #{writer},
+        0,
+        ifnull(#{noticeYn}, 0),
+        ifnull(#{secretYn}, 0),
+        0,
+        now(),
+        null,
+        null
+        )
+    </insert>
+
+    <select id="selectBoardDetail" parameterType="long" resultType="com.board.domain.BoardDTO">
+        select <include refid="boardColumns"/>
+        from tb_board
+        where delete_yn = 0 and idx = #{idx}
+    </select>
+
+    <update id="updateBoard" parameterType="com.board.domain.BoardDTO">
+        update tb_board
+        set update_time = now(),
+            title = #{title},
+            content = #{content},
+            writer = #{writer},
+            notice_yn = ifnull(#{noticeYn}, 0),
+            secret_yn = ifnull(#{secretYn}, 0)
+        where idx = #{idx}
+    </update>
+
+    <update id="deleteBoard" parameterType="long">
+        update tb_board
+        set delete_yn = 1,
+            delete_time = now()
+        where idx = #{idx}
+    </update>
+
+    <select id="selectBoardList" parameterType="com.board.domain.BoardDTO" resultType="com.board.domain.BoardDTO">
+        select *
+        from tb_board
+        where delete_yn = 0
+        order by notice_yn,
+                 idx desc,
+                 insert_time desc
+    </select>
+
+    <select id="selectBoardTotalCount" parameterType="com.board.domain.BoardDTO" resultType="int">
+        select count(*)
+        from tb_board
+        where delete_yn = 0
+    </select>
+</mapper>
