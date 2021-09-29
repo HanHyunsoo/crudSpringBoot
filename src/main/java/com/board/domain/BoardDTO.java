@@ -24,13 +24,13 @@ public class BoardDTO {
     private int viewCnt;
 
     /** 공지 여부 */
-    private String noticeYn;
+    private boolean noticeYn;
 
     /** 비밀 여부 */
-    private String secretYn;
+    private boolean secretYn;
 
     /** 삭제 여부 */
-    private String deleteYn;
+    private boolean deleteYn;
 
     /** 등록일 */
     private LocalDateTime insertTime;
