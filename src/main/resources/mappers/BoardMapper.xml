@@ -61,7 +61,7 @@
         select *
         from tb_board
         where delete_yn = 0
-        order by notice_yn,
+        order by notice_yn desc,
                  idx desc,
                  insert_time desc
     </select>
