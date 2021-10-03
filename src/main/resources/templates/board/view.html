@@ -95,4 +95,22 @@
     </div>
     <!-- /.box-content -->
 </th:block>
+<th:block layout:fragment="script">
+    <script th:inline="javascript">
+        /* <![CDATA[ */
+        function deleteBoard(idx) {
+            if (confirm(idx + "번 글을 삭제하겠습니까?")) {
+                const url = '[[ @{/board/delete.do} ]]';
+                let html = "";
+
+                html += '<form name="dataForm" action=' + url + ' method="post">';
+                html += '<input type="hidden" name="idx" value="' + idx + '" />';
+                html += '</form>';
+
+                $('body').append(html);
+                document.dataForm.submit();
+            }
+        }
+    </script>
+</th:block>
 </html>
