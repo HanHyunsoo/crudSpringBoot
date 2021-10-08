@@ -8,9 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -41,10 +39,10 @@ public class BoardController extends UiUtils {
     }
 
     @PostMapping(value = "/board/register.do")
-    public String registerBoard(@Valid final BoardDTO params, Model model) {
+    public String registerBoard(@Valid final BoardDTO params, BindingResult bindingResult, Model model) {
         try {
             boolean isRegistered = boardService.registerBoard(params);
-            if (!isRegistered) {
+            if (!isRegistered || bindingResult.hasErrors()) {
                 return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/board/list.do", Method.GET, null, model);
             }
         } catch (DataAccessException e) {
