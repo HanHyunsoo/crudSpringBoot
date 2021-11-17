@@ -61,15 +61,17 @@
         select <include refid="boardColumns"/>
         from tb_board
         where delete_yn = 0
+        <include refid="CommonMapper.search"/>
         order by notice_yn desc,
                  idx desc,
                  insert_time desc
-        limit #{paginationInfo.firstRecordIndex}, #{recordsPerPage}
+        <include refid="CommonMapper.paging"/>
     </select>
 
     <select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
         select count(*)
         from tb_board
         where delete_yn = 0
+        <include refid="CommonMapper.search"/>
     </select>
 </mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="CommonMapper">
+    <!--MySql 페이징-->
+    <sql id="paging">
+        limit #{paginationInfo.firstRecordIndex}, #{recordsPerPage}
+    </sql>
+
+    <!--MySql 검색-->
+    <sql id="search">
+        <!--검색 키워드가 있을 때-->
+        <if test="searchKeyword != null and searchKeyword != ''">
+            <choose>
+                <!--검색 유형이 있을 때-->
+                <when test="searchKeyword != null and searchKeyword != ''">
+                    <choose>
+                        <when test="'title'.equals(searchType)">
+                            and title like concat('%', #{searchKeyword}, '%')
+                        </when>
+                        <when test="'content'.equals(searchType)">
+                            and content like concat('%', #{searchKeyword}, '%')
+                        </when>
+                        <when test="'writer'.equals(searchType)">
+                            and writer like concat('%', #{searchKeyword}, '%')
+                        </when>
+                    </choose>
+                </when>
+                <!--검색 유형이 없을 때-->
+                <otherwise>
+                    and (
+                        title like concat('%', #{searchKeyword}, '%')
+                        or content like concat('%', #{searchKeyword}, '%')
+                        or writer like concat('%', #{searchKeyword}, '%')
+                        )
+                </otherwise>
+            </choose>
+        </if>
+    </sql>
+</mapper>
