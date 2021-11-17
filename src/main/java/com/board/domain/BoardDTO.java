@@ -7,7 +7,7 @@ import javax.validation.constraints.*;
 
 @Getter
 @Setter
-public class BoardDTO {
+public class BoardDTO extends CommonDTO {
 
     /** 번호 (PK) */
     private Long idx;
@@ -32,17 +32,5 @@ public class BoardDTO {
 
     /** 비밀 여부 */
     private boolean secretYn;
-
-    /** 삭제 여부 */
-    private boolean deleteYn;
-
-    /** 등록일 */
-    private LocalDateTime insertTime;
-
-    /** 수정일 */
-    private LocalDateTime updateTime;
-
-    /** 삭제일 */
-    private LocalDateTime deleteTime;
 
 }

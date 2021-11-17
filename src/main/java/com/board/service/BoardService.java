@@ -12,6 +12,6 @@ public interface BoardService {
 
     boolean deleteBoard(Long idx);
 
-    List<BoardDTO> getBoardList();
+    List<BoardDTO> getBoardList(BoardDTO params);
     
 }

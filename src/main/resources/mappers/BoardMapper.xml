@@ -16,7 +16,7 @@
         delete_time
     </sql>
 
-    <insert id="insertBoard" parameterType="com.board.domain.BoardDTO">
+    <insert id="insertBoard" parameterType="BoardDTO">
         insert into tb_board (<include refid="boardColumns"/>)
         values (
         #{idx},
@@ -33,13 +33,13 @@
         )
     </insert>
 
-    <select id="selectBoardDetail" parameterType="long" resultType="com.board.domain.BoardDTO">
+    <select id="selectBoardDetail" parameterType="long" resultType="BoardDTO">
         select <include refid="boardColumns"/>
         from tb_board
         where delete_yn = 0 and idx = #{idx}
     </select>
 
-    <update id="updateBoard" parameterType="com.board.domain.BoardDTO">
+    <update id="updateBoard" parameterType="BoardDTO">
         update tb_board
         set update_time = now(),
             title = #{title},
@@ -57,16 +57,17 @@
         where idx = #{idx}
     </update>
 
-    <select id="selectBoardList" parameterType="com.board.domain.BoardDTO" resultType="com.board.domain.BoardDTO">
-        select *
+    <select id="selectBoardList" parameterType="BoardDTO" resultType="BoardDTO">
+        select <include refid="boardColumns"/>
         from tb_board
         where delete_yn = 0
         order by notice_yn desc,
                  idx desc,
                  insert_time desc
+        limit #{paginationInfo.firstRecordIndex}, #{recordsPerPage}
     </select>
 
-    <select id="selectBoardTotalCount" parameterType="com.board.domain.BoardDTO" resultType="int">
+    <select id="selectBoardTotalCount" parameterType="BoardDTO" resultType="int">
         select count(*)
         from tb_board
         where delete_yn = 0
