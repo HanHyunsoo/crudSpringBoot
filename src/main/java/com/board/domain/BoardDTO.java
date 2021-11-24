@@ -1,6 +1,8 @@
 package com.board.domain;
 
 import java.time.LocalDateTime;
+import java.util.List;
+
 import lombok.Getter;
 import lombok.Setter;
 import javax.validation.constraints.*;
@@ -32,5 +34,11 @@ public class BoardDTO extends CommonDTO {
 
     /** 비밀 여부 */
     private boolean secretYn;
+
+    /** 파일 변경 여부 */
+    private boolean changeYn;
+
+    /** 파일 인덱스 리스트 */
+    private List<Long> fileIdxs;
 
 }

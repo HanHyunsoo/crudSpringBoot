@@ -17,4 +17,6 @@ public interface BoardService {
     boolean deleteBoard(Long idx);
 
     List<BoardDTO> getBoardList(BoardDTO params);
+
+    List<AttachDTO> getAttachFileList(Long boardIdx);
 }

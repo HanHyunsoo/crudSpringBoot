@@ -39,6 +39,9 @@ public class BoardController extends UiUtils {
                 return showMessageWithRedirect("없는 게시글이거나 이미 삭제된 게시글입니다.", "/board/list.do", Method.GET, null, model);
             }
             model.addAttribute("board", board);
+
+            List<AttachDTO> fileList = boardService.getAttachFileList(idx);
+            model.addAttribute("fileList", fileList);
         }
 
         return "board/write";
@@ -87,21 +90,6 @@ public class BoardController extends UiUtils {
 
         return "board/view";
     }
-
-//    @GetMapping(value = "/board/view.do")
-//    public String openBoardDetail(@ModelAttribute("params") BoardDTO params, @RequestParam(value = "idx", required = false) Long idx, Model model) {
-//        if (idx == null) {
-//            return showMessageWithRedirect("올바르지 않은 접근입니다.", "/board/list.do", Method.GET, null, model);
-//        }
-//
-//        BoardDTO board = boardService.getBoardDetail(idx);
-//        if (board == null || "Y".equals(board.getDeleteYn())) {
-//            return showMessageWithRedirect("없는 게시글이거나 이미 삭제된 게시글입니다.", "/board/list.do", Method.GET, null, model);
-//        }
-//        model.addAttribute("board", board);
-//
-//        return "board/view";
-//    }
 
     @PostMapping(value = "/board/delete.do")
     public String deleteBoard(@ModelAttribute("params") BoardDTO params,
