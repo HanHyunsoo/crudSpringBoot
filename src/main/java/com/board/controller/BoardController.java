@@ -1,6 +1,7 @@
 package com.board.controller;
 
 import com.board.constant.Method;
+import com.board.domain.AttachDTO;
 import com.board.domain.BoardDTO;
 import com.board.service.BoardService;
 import com.board.util.UiUtils;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -43,14 +45,11 @@ public class BoardController extends UiUtils {
     }
 
     @PostMapping(value = "/board/register.do")
-    public String registerBoard(@Valid @ModelAttribute("params") final BoardDTO params,
-                                BindingResult bindingResult,
-                                Model model) {
-
+    public String registerBoard(final BoardDTO params, final MultipartFile[] files, Model model) {
         Map<String, Object> pagingParams = getPagingParams(params);
         try {
-            boolean isRegistered = boardService.registerBoard(params);
-            if (!isRegistered || bindingResult.hasErrors()) {
+            boolean isRegistered = boardService.registerBoard(params, files);
+            if (isRegistered == false) {
                 return showMessageWithRedirect("게시글 등록에 실패하였습니다.", "/board/list.do", Method.GET, pagingParams, model);
             }
         } catch (DataAccessException e) {
@@ -59,6 +58,7 @@ public class BoardController extends UiUtils {
         } catch (Exception e) {
             return showMessageWithRedirect("시스템에 문제가 발생하였습니다.", "/board/list.do", Method.GET, pagingParams, model);
         }
+
         return showMessageWithRedirect("게시글 등록이 완료되었습니다.", "/board/list.do", Method.GET, pagingParams, model);
     }
 
