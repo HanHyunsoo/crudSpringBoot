@@ -49,4 +49,12 @@ public class Board {
         this.writer = writer;
         this.modifiedDate = LocalDateTime.now();
     }
+
+    public void increaseHits() {
+        this.hits++;
+    }
+
+    public void delete() {
+        this.deleteYn = 'Y';
+    }
 }
