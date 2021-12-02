@@ -4,7 +4,6 @@ import com.board.domain.AttachDTO;
 import com.board.domain.BoardDTO;
 import com.board.mapper.AttachMapper;
 import com.board.mapper.BoardMapper;
-import com.board.paging.Criteria;
 import com.board.paging.PaginationInfo;
 import com.board.util.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;

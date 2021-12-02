@@ -4,7 +4,6 @@ import com.board.constant.Method;
 import com.board.paging.Criteria;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.LinkedHashMap;
