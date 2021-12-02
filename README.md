@@ -1,6 +1,6 @@
 # Spring 연습장
 
-### 스프링 프레임워크를 이용해서 만든 프로젝트들 레포지토리
+### Projects
 
-* [CRUD](https://github.com/HanHyunsoo/springBootPractice/tree/crudPractice)
-* [JPA CRUD](https://github.com/HanHyunsoo/springBootPractice/tree/jpaCrudPractice)
+* [CRUD](https://github.com/HanHyunsoo/springStorage/tree/main/Projects/CRUD)
+* [JPA CRUD](https://github.com/HanHyunsoo/springStorage/tree/main/Projects/JPA)
