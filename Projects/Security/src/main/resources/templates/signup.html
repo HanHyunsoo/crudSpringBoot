@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sign up</title>
+</head>
+<body>
+<h1>Sign up</h1>
+<hr>
+
+<form th:action="@{/user}" method="post">
+    <label for="email">email</label>
+    <input type="text" name="email" id="email"> <br>
+
+    <label for="password">password</label>
+    <input type="password" name="password" id="password"> <br>
+
+    <label for="admin">admin</label>
+    <input id="admin" type="radio" name="auth" value="ROLE_ADMIN, ROLE_USER"> <br>
+
+    <label for="user">user</label>
+    <input id="user" type="radio" name="auth" value="ROLE_USER"> <br>
+
+    <button type="submit">Join</button>
+</form>
+<br>
+
+<a href="/login">Go to login</a>
+</body>
+</html>
