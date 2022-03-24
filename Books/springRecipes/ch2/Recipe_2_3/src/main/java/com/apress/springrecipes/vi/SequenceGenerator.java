@@ -1,0 +1,42 @@
+package com.apress.springrecipes.vi;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+
+public class SequenceGenerator {
+
+    @Autowired
+    // @Qualifier에 이름을 주어 후보 빈을 명시할 수도 있음.
+    @Qualifier("numberPrefixGenerator")
+    private PrefixGenerator prefixGenerator;
+    private String suffix;
+    private int initial;
+    private final AtomicInteger counter = new AtomicInteger();
+
+    public SequenceGenerator() {
+    }
+
+    public SequenceGenerator(PrefixGenerator prefixGenerator, String suffix, int initial) {
+        this.prefixGenerator = prefixGenerator;
+        this.suffix = suffix;
+        this.initial = initial;
+    }
+
+    public void setPrefixGenerator(PrefixGenerator prefixGenerator) {
+        this.prefixGenerator = prefixGenerator;
+    }
+
+    public void setSuffix(String suffix) {
+        this.suffix = suffix;
+    }
+
+    public void setInitial(int initial) {
+        this.initial = initial;
+    }
+
+    public synchronized String getSequence() {
+        return prefixGenerator.getPrefix() + initial + counter.getAndIncrement() + suffix;
+    }
+}
