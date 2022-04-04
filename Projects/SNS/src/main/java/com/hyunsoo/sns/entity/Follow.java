@@ -1,4 +1,4 @@
-package com.hyunsoo.sns.model;
+package com.hyunsoo.sns.entity;
 
 import lombok.Builder;
 import lombok.Getter;
