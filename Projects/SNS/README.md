@@ -30,7 +30,7 @@ dependencies {
 
 ## ToDo list
 
-- [ ] DB(Entity) 구성
+- [x] DB(Entity) 구성
 - [ ] JWT를 이용한 Spring Security
 - [ ] User 로그인, 로그아웃, 회원가입
 - [ ] User 끼리 Follow, UnFollow
