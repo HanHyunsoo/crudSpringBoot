@@ -1,4 +1,4 @@
-package com.hyunsoo.sns.model;
+package com.hyunsoo.sns.entity;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;
