@@ -8,6 +8,7 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Table(name = "likes")
 @NoArgsConstructor
 public class Like extends BaseTime {
 
