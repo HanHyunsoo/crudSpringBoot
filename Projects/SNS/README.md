@@ -30,13 +30,13 @@ dependencies {
 
 ## DB ERD
 
-![ERD](/erd.png)
+![ERD](erd.png)
 
 ## ToDo list
 
 - [x] DB(Entity) 구성
-- [ ] JWT를 이용한 Spring Security
-- [ ] User 로그인, 로그아웃, 회원가입
+- [x] JWT를 이용한 Spring Security
+- [x] User 로그인, 로그아웃, 회원가입
 - [ ] User 끼리 Follow, UnFollow
 - [ ] 글 CRUD
 - [ ] 댓글과 대댓글 CRUD
