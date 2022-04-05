@@ -15,12 +15,13 @@ import java.util.Collection;
 public class User extends BaseTime implements UserDetails {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false, length = 30, unique = true)
     private String username;
 
-    @Column(nullable = false, length = 50)
+    @Column(nullable = false)
     private String password;
 
     @Builder
