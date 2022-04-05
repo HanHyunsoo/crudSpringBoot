@@ -1,4 +1,4 @@
-package com.hyunsoo.sns.model;
+package com.hyunsoo.sns.entity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Post extends BaseTime {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(nullable = false)

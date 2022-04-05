@@ -28,6 +28,10 @@ dependencies {
 }
 ```
 
+## DB ERD
+
+![ERD](/erd.png)
+
 ## ToDo list
 
 - [x] DB(Entity) 구성

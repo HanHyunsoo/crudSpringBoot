@@ -1,4 +1,4 @@
-package com.hyunsoo.sns.model;
+package com.hyunsoo.sns.entity;
 
 import lombok.Builder;
 import lombok.Getter;
@@ -8,10 +8,12 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Table(name = "likes")
 @NoArgsConstructor
-public class Comment extends BaseTime {
+public class Like extends BaseTime {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(nullable = false)
@@ -22,17 +24,9 @@ public class Comment extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
-    @Column(nullable = false)
-    private String content;
-
     @Builder
-    public Comment(User user, Post post, String content) {
+    public Like(User user, Post post) {
         this.user = user;
         this.post = post;
-        this.content = content;
-    }
-
-    public void update(String content) {
-        this.content = content;
     }
 }
