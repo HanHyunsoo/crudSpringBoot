@@ -8,10 +8,12 @@ import javax.persistence.*;
 
 @Getter
 @Entity
+@Table(name = "likes")
 @NoArgsConstructor
 public class Like extends BaseTime {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(nullable = false)

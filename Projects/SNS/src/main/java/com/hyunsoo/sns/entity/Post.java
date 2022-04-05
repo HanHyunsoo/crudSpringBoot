@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class Post extends BaseTime {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @JoinColumn(nullable = false)
