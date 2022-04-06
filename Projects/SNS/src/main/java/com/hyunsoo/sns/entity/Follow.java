@@ -16,14 +16,14 @@ public class Follow extends BaseTime {
     private Long id;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User from;
+    private User fromUser;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private User to;
+    private User toUser;
 
     @Builder
-    public Follow(User from, User to) {
-        this.from = from;
-        this.to = to;
+    public Follow(User fromUser, User toUser) {
+        this.fromUser = fromUser;
+        this.toUser = toUser;
     }
 }

@@ -12,7 +12,6 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @RequestMapping("/auth")
@@ -26,6 +25,11 @@ public class UserController {
 
     private final PasswordEncoder passwordEncoder;
 
+    /**
+     * 회원가입 메소드
+     * @param userCreateRequest : dto
+     * @return 200, 403, 409 중 하나 http status 반환
+     */
     @PostMapping("/join")
     public ResponseEntity<Object> join(@RequestBody final UserCreateRequest userCreateRequest) {
 
@@ -45,6 +49,12 @@ public class UserController {
         return ResponseEntity.ok("회원가입 성공");
     }
 
+    /**
+     * 로그인 메소드
+     * @param loginRequest : dto
+     * @param response     : header에 jwt를 저장하기 위한 param
+     * @return : 200, 400, 404 중 하나 http status 반환
+     */
     @PostMapping("/login")
     public ResponseEntity<Object> login(@RequestBody final LoginRequest loginRequest,
                                         final HttpServletResponse response) {
@@ -67,7 +77,11 @@ public class UserController {
         return ResponseEntity.ok(user.getUsername() + "님으로 로그인 했습니다.\n" + token);
     }
 
-    // 로그아웃 메소드
+    /**
+     * 로그아웃 메소드
+     * @param response : header에 jwt토큰을 null로 바꾸기 위한 param
+     * @return : 200 http status
+     */
     @PostMapping("/logout")
     public ResponseEntity<Object> logout(final HttpServletResponse response) {
         response.setHeader("Authorization", null);
@@ -75,7 +89,11 @@ public class UserController {
         return ResponseEntity.ok("로그아웃 성공");
     }
 
-    // 현재 로그인 된 user 확인
+    /**
+     * 커스텀 필터로 인증하는 유저 이름을 반환하는 메소드
+     * @param user : 필터에서 걸러지는 Authentication 객체
+     * @return : 200, body: username 반환
+     */
     @GetMapping("/info")
     public ResponseEntity<String> getInfo(@AuthenticationPrincipal Object user) {
 
