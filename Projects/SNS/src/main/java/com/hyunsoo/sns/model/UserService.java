@@ -6,7 +6,6 @@ import com.hyunsoo.sns.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,19 +18,26 @@ public class UserService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    // username으로 UserDetails 엔티티를 불러오는 메소드
+    /**
+     * username으로 UserDetails 엔티티를 불러오는 메소드
+     * @param username : username
+     * @return : null or UserDetails Entity
+     */
     @Override
     @Transactional(readOnly = true)
     public UserDetails loadUserByUsername(String username) {
         return userRepository.findByUsername(username).orElse(null);
     }
 
-    // User Entity를 저장하는 메소드
+    /**
+     * User Entity를 저장하는 메소드
+     * @param userCreateRequest : dto
+     */
     @Transactional
-    public void save(UserCreateRequest request) {
+    public void save(UserCreateRequest userCreateRequest) {
         User entity = User.builder()
-                .username(request.getUsername())
-                .password(passwordEncoder.encode(request.getPassword1()))
+                .username(userCreateRequest.getUsername())
+                .password(passwordEncoder.encode(userCreateRequest.getPassword1()))
                 .build();
 
         userRepository.save(entity);
