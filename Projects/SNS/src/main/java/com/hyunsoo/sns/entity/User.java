@@ -24,10 +24,34 @@ public class User extends BaseTime implements UserDetails {
     @Column(nullable = false)
     private String password;
 
+    @Column(nullable = false)
+    private Long following;
+
+    @Column(nullable = false)
+    private Long follower;
+
     @Builder
     public User(String username, String password) {
         this.username = username;
         this.password = password;
+        this.following = 0L;
+        this.follower = 0L;
+    }
+
+    public void increaseFollowing() {
+        this.following++;
+    }
+
+    public void increaseFollower() {
+        this.follower++;
+    }
+
+    public void decreaseFollowing() {
+        this.following--;
+    }
+
+    public void decreaseFollower() {
+        this.follower--;
     }
 
     @Override
