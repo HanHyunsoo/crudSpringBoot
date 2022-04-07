@@ -40,7 +40,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         .antMatchers("/*/join", "/*/login").permitAll()
                         .anyRequest().authenticated()
                 .and()
-                .anonymous().disable()
+//                .anonymous().disable()
                 .exceptionHandling()
                 .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
                 .and()
