@@ -38,6 +38,6 @@ dependencies {
 - [x] JWT를 이용한 Spring Security
 - [x] User 로그인, 로그아웃, 회원가입
 - [x] User 끼리 Follow, UnFollow
-- [ ] 글 CRUD
+- [x] 글 CRUD
 - [ ] 댓글과 대댓글 CRUD
 - [ ] 좋아요 기능
