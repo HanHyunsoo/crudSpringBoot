@@ -41,7 +41,7 @@ public class JwtAuthenticationProvider {
     public Authentication getAuthentication(String token) {
         UserDetails user = userService.loadUserByUsername(getUserName(token));
 
-        return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword());
+        return new UsernamePasswordAuthenticationToken(user.getUsername(), user.getPassword(), user.getAuthorities());
     }
 
     // 토큰에서 username 추출
