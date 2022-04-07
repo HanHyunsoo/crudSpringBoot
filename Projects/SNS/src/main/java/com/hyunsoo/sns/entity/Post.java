@@ -3,6 +3,7 @@ package com.hyunsoo.sns.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.parameters.P;
 
 import javax.persistence.*;
 
@@ -37,8 +38,13 @@ public class Post extends BaseTime {
     }
 
     public void update(String title, String content) {
-        this.title = title;
-        this.content = content;
+        if (title != null) {
+            this.title = title;
+        }
+
+        if (content != null) {
+            this.content = content;
+        }
     }
 
     public void increaseLike() {
