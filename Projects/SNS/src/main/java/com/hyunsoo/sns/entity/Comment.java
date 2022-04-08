@@ -23,13 +23,18 @@ public class Comment extends BaseTime {
     @ManyToOne(fetch = FetchType.LAZY)
     private Post post;
 
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Comment parent;
+
     @Column(nullable = false)
     private String content;
 
     @Builder
-    public Comment(User user, Post post, String content) {
+    public Comment(Long id, User user, Post post, Comment comment, String content) {
+        this.id = id;
         this.user = user;
         this.post = post;
+        this.parent = comment;
         this.content = content;
     }
 
