@@ -40,4 +40,4 @@ dependencies {
 - [x] User 끼리 Follow, UnFollow
 - [x] 글 CRUD
 - [x] 댓글과 대댓글 CRUD
-- [ ] 좋아요 기능
+- [x] 좋아요 기능
