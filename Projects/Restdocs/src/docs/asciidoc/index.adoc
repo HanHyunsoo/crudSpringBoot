@@ -1,0 +1,61 @@
+ifndef::snippets[]
+:snippets: ./build/generated-snippets
+endif::[]
+ifndef::docsdir[]
+:docsdir: ./src/docs/asciidoc
+endif::[]
+
+= Spring REST Docs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+
+[[resources-person]]
+== Person
+
+=== Request fields info
+
+include::{snippets}/person-create/request-fields.adoc[]
+
+=== Response fields info
+
+include::{snippets}/person-get/response-fields.adoc[]
+
+=== Person 생성
+
+operation::person-create[snippets='http-request,http-response']
+
+=== Person 정보
+
+operation::person-get[snippets='http-request,http-response']
+
+=== 모든 Person 정보
+
+operation::person-get-all[snippets='http-request,http-response']
+
+=== Person 수정
+
+operation::person-update[snippets='http-request,http-response']
+
+=== Person 삭제
+
+operation::person-delete[snippets='http-request,http-response']
+
+//include::{docdir}/resources-person-get.adoc[]
+//
+//include::{docdir}/resources-person-get-all.adoc[]
+//
+//include::{docdir}/resources-person-update.adoc[]
+//
+//include::{docdir}/resources-person-delete.adoc[]
+
+//include::{docdir}/resources-person-create.adoc[]
+//
+//include::{docdir}/resources-person-get.adoc[]
+//
+//include::{docdir}/resources-person-get-all.adoc[]
+//
+//include::{docdir}/resources-person-update.adoc[]
+//
+//include::{docdir}/resources-person-delete.adoc[]
