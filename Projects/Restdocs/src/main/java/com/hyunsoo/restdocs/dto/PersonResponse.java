@@ -1,6 +1,7 @@
 package com.hyunsoo.restdocs.dto;
 
 import com.hyunsoo.restdocs.model.Person;
+import lombok.Builder;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -18,5 +19,13 @@ public class PersonResponse {
         this.name = entity.getName();
         this.age = entity.getAge();
         this.created = entity.getCreated();
+    }
+
+    @Builder
+    public PersonResponse(Long id, String name, Short age, LocalDateTime created) {
+        this.id = id;
+        this.name = name;
+        this.age = age;
+        this.created = created;
     }
 }
