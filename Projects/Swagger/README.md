@@ -26,3 +26,9 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 ```
+
+## 후기
+
+문서를 자동화 하는 것은 편하지만 DTO와 Controller에 어노테이션을 추가하는 방식이기 때문에 코드가 일관적이지 않음
+
+대체 라이브러리인 Spring Rest Docs도 공부해봐야 겠음.
